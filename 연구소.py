@@ -3,6 +3,7 @@ import sys
 sys.stdin = open('연구소_input.txt')
 import copy
 from collections import deque
+from itertools import combinations
 def bfs() :
     global ans
     newarr = copy.deepcopy(arr)
@@ -28,7 +29,7 @@ def wall(start, cnt) :
     if cnt == 3:
         bfs()
         return
-    for i in range(start,N*M) :
+    for i in range(start,N*M)  :
         x = i // M
         y = i % M
 

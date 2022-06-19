@@ -6,7 +6,6 @@ input = sys.stdin.readline
 dx = [-1,-1,-1,0,0,1,1,1]
 dy = [-1,0,1,-1,1,-1,0,1]
 tree = deque()
-dead = deque()
 treetmp = deque()
 N,M,K = map(int,input().split())
 arr = [[5] * N for _ in range(N)]
@@ -15,23 +14,23 @@ for _ in range(M) :
     x,y,z = map(int,input().split())
     tree.append((x-1,y-1,z))
 
-cnt = 0
+
 while K :
     K -= 1
+    cnt = 0
+    dead = []
     while tree:
         x, y, z = tree.popleft()
-        if arr[x][y] == 0:
-            dead.append((x, y, z))
+        arr[x][y] -= z
+        if arr[x][y] >= 0:
+            treetmp.append((x, y, z+1))
         else:
-            arr[x][y] -= z
-            if arr[x][y] < 0:
-                arr[x][y] += z
-                dead.append((x, y, z))
-            else:
-                treetmp.append((x, y, z + 1))
+            arr[x][y] += z
+            dead.append(z)
     while dead :
-        x, y, z = dead.popleft()
-        arr[x][y] += z//2
+        tmp = dead.pop()
+        arr[x][y] += (tmp//2)
+
     while treetmp :
         x,y,z = treetmp.popleft()
         if z%5 == 0 :
