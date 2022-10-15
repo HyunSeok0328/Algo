@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('최대힙_input.txt')
+sys.stdin = open('절대값힙_input.txt')
 from sys import stdin
 import heapq
 n = int(stdin.readline())
@@ -12,5 +12,4 @@ for i in range(n) :
         else :
             print(heapq.heappop(q)[1])
     else :
-        heapq.heappush(q, [-x,x])
-
+        heapq.heappush(q,(abs(x),x))
