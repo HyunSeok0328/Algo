@@ -1,17 +1,22 @@
-import sys
-sys.stdin = open('연습_input.txt')
-s = str(input())
-arr = list(s)
-answer = 0
+s = "abcabcbb"
+s = list(s)
+ans = 0
+left, right = 0, 1
 cnt = 0
-for i in range(len(arr)) :
-    for j in range(1,(len(arr)//2)+1) :
-        if (i-j) >= 0 and (i+j)< len(arr) :
-            if arr[i-j] == arr[i+j] :
-                cnt += 1
-            else :
-                break
-    answer = max(answer,cnt)
-    cnt = 0
-answer = (answer * 2) + 1
-print(answer)
+while True:
+    if s[right] == s[right - 1]:
+        cnt = right - left - 1
+        ans = max(ans, cnt)
+        left = right
+        right += 1
+    if right >= len(s) - 1:
+        cnt = right - left
+        ans = max(ans, cnt)
+        print(ans)
+        break
+    elif s[left] != s[right]:
+        right += 1
+    elif s[left] == s[right]:
+        cnt = right - left
+        ans = max(ans, cnt)
+        left += 1

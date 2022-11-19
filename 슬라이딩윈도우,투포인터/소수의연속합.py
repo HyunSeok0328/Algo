@@ -24,6 +24,15 @@ for i in range(2,len(a)) :
 #         if value > n :
 #             value = 0
 #             break
+# print(cnt)
+# for i in range(len(prime_list)) :
+#     for j in range(len(prime_list)-i) :
+#         value += prime_list[i+j]
+#         if value == n :
+#             cnt += 1
+#         if value > n :
+#             value = 0
+#             break
 while True :
     if value == n :
         cnt += 1
@@ -37,6 +46,19 @@ while True :
     else :
         value += prime_list[right]
         right += 1
+# while True :
+#     if value == n :
+#         cnt += 1
+#         value -= prime_list[left]
+#         left += 1
+#     elif value > n :
+#         value -= prime_list[left]
+#         left += 1
+#     elif right == len(prime_list) :
+#         break
+#     else :
+#         value += prime_list[right]
+#         right += 1
 
 
 print(cnt)
